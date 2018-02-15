@@ -2,10 +2,10 @@ BZFlag server docker container
 
 .build
 ----
-docker build -t bzflag-server .
+docker build -t bzfs .
 ----
 
 .run
 ----
-docker run -p 5154:5154 bzflag-server
+docker run -p 5154:5154 bzfs
 ----
