@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bzfs
+  labels:
+    app: bzfs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bzfs
+  template:
+    metadata:
+      labels:
+        app: bzfs
+    spec:
+      containers:
+      - name: bzfs
+        image: wordup/bzfs:latest
+        ports:
+        - containerPort: 5154
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: bzfs
+spec:
+  type: NodePort
+  selector:
+    app: bzfs
+  ports:
+  - name: bzudp
+    protocol: UDP
+    port: 5154
+    nodePort: 30003
+  - name: bztcp
+    protocol: TCP
+    port: 5154
+    nodePort: 30003
