@@ -7,5 +7,5 @@ docker build -t bzfs .
 
 .run
 ----
-docker run -p 5154:5154 bzfs
+docker run -p 5154:5154/udp -p 5154:5154/tcp bzfs
 ----
