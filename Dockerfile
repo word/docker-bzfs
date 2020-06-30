@@ -1,11 +1,10 @@
-FROM fedora:latest
+FROM voidlinux/voidlinux:latest
 MAINTAINER akw
 
-RUN dnf -y update && dnf clean all
-RUN dnf -y install bzflag
+RUN xbps-install -Sy bzflag
 
-ADD ./bzfs.conf /usr/local/etc
+ADD ./bzfs.conf /etc
 
 EXPOSE 5154
 
-CMD ["/bin/bzfs","-conf","/usr/local/etc/bzfs.conf"]
+CMD ["/bin/bzfs","-conf","/etc/bzfs.conf"]
